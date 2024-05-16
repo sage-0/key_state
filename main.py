@@ -31,9 +31,10 @@ def main():
         current_state = bool(p33.value())
         if current_state != last_state:
             last_state = current_state
-            state_text = "OPEN" if current_state else "CLOSE"
+            state_text = "Opened" if current_state else "Closed"
             payload = f"""content={state_text}"""
             response = requests.post(URL, headers={"Content-Type": "application/x-www-form-urlencoded"}, data=payload)
             response.close()
+            time.sleep(10)
 
 main()
